@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns="http://www.w3.org/ns/widgets" version="1.0.1" defaultlocale="en" id="https://addons.opera.com/extensions/details/yet-another-statusbar/" href="https://addons.opera.com/extensions/details/yet-another-statusbar/">
+  <name>Yet Another Statusbar</name>
+  <author href="http://chaosinacan.com/">Joel Spadin</author>
+  <access origin="*"/>
+  <icon src="img/icon.png"/>
+  <update-description href="https://extension-updates.opera.com/api/w3c-wd1/update/c149a8fb-87d4-4043-bf9d-e1e807197232/"/>
+  <description xml:lang="en">Displays a popup statusbar when hovering over links</description>
+</widget>
