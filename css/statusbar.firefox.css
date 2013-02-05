@@ -1,4 +1,4 @@
-﻿html > operastatusbar { }
+html > operastatusbar { }
 
 html > operastatusbar,
 html > operastatusbar operastatusspan {
@@ -24,6 +24,7 @@ html > operastatusbar {
 	direction: ltr !important;
 
 	color: #444 !important;
+    background: -o-linear-gradient(to bottom, #fefefe, #dedede) !important;
 	background: linear-gradient(to bottom, #fefefe, #dedede) !important;
 	border-width: 1px 1px 0 0 !important;
 	border-style: solid !important;

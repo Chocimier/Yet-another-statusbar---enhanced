@@ -201,8 +201,9 @@ a:hover {
 }
 
 .horizontal input[type=radio]:checked + label {
-	background: #bbb 
-		-o-linear-gradient(top, rgba(0,0,0, 0), rgba(0,0,0, 0.1));
+	background-color: #bbb;
+	background-image: -o-linear-gradient(to bottom, rgba(0,0,0, 0), rgba(0,0,0, 0.1));
+    background-image: linear-gradient(to bottom, rgba(0,0,0, 0), rgba(0,0,0, 0.1));
 }
 
 .horizontal > input[type=radio]:first-of-type + label {

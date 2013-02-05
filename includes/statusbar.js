@@ -23,30 +23,50 @@ var isExpanded = false;
 /** Initializes the statusbar */
 function init() {
     var theme = JSON.parse(widget.preferences['style']);
-    var stylesheet = opera.extension.getFile('/css/statusbar.' + theme + '.css');
-    var fr = new FileReader();
-    fr.onload = function () {
-        statusbar = document.createElement('operastatusbar');
-        statusbar.style.display = 'none';
-        statusbar.style.opacity = '0';
-        statusbar.addEventListener('mouseenter', hideMouseover, false);
-        protocolText = document.createElement('operastatusspan');
-        protocolText.className = 'protocol';
-        domainText = document.createElement('operastatusspan');
-        domainText.className = 'domain';
-        subdomainText = document.createTextNode('');
-        pathText = document.createTextNode('');
-        statusbar.appendChild(protocolText);
-        statusbar.appendChild(subdomainText);
-        statusbar.appendChild(domainText);
-        statusbar.appendChild(pathText);
-        document.documentElement.appendChild(statusbar);
-        style = document.createElement('style');
-        style.appendChild(document.createTextNode(fr.result));
-        document.head.appendChild(style);
-        document.body.addEventListener('mouseover', show, false);
-    };
-    fr.readAsText(stylesheet);
+    var path = '/css/statusbar.' + theme + '.css';
+    statusbar = document.createElement('operastatusbar');
+    statusbar.style.display = 'none';
+    statusbar.style.opacity = '0';
+    statusbar.addEventListener('mouseenter', hideMouseover, false);
+    protocolText = document.createElement('operastatusspan');
+    protocolText.className = 'protocol';
+    domainText = document.createElement('operastatusspan');
+    domainText.className = 'domain';
+    subdomainText = document.createTextNode('');
+    pathText = document.createTextNode('');
+    statusbar.appendChild(protocolText);
+    statusbar.appendChild(subdomainText);
+    statusbar.appendChild(domainText);
+    statusbar.appendChild(pathText);
+    document.documentElement.appendChild(statusbar);
+    style = document.createElement('style');
+    document.head.appendChild(style);
+    document.body.addEventListener('mouseover', show, false);
+    if (opera.extension.getFile)
+    {
+        var stylesheet = opera.extension.getFile(path);
+        var fr = new FileReader();
+        fr.onload = function () {
+            style.textContent = fr.result;
+        };
+        fr.readAsText(stylesheet);
+    }
+    else
+    {
+        var onCSS = function(event) {
+            var message = event.data;
+            // Remove the message listener so it doesn't get called again.
+            opera.extension.removeEventListener('message', onCSS, false);
+            style.textContent = message.data.css;
+        }
+        // On receipt of a message from the background script, execute onCSS().
+        opera.extension.addEventListener('message', onCSS, false);
+        // Send the stylesheet path to the background script to get the CSS.
+        opera.extension.postMessage({
+            topic: 'LoadInjectedCSS',
+            data: path
+        });
+    }
 }
 /**
 * Displays the statusbar
