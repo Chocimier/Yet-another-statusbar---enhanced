@@ -1,14 +1,17 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
-	<title>Statusbar</title>
+	<title translate="yes">Statusbar</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="css/options.css">
+    <link rel="stylesheet" href="css/quotes.css">
 	<script src="js/jquery.js"></script>
 	<script src="js/options.js"></script>
 	<script src="js/storage.js"></script>
 	<script src="js/options_page.js"></script>
 	<script src="js/default_settings.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="translation.js"></script>
 	<script>
 		OptionsPage.init(settings);
 	</script>
@@ -21,22 +24,22 @@
 			<img src="img/icon.png" alt="Statusbar Icon">
 			<div class="right">
 				<h1><span id="widget-name">Statusbar</span> <span class="version" id="widget-version"></span></h1>
-				<h2>By <span id="widget-author">Joel Spadin</span></h2>
+				<h2><span translate="yes">By</span> <span id="widget-author">Joel Spadin</span></h2>
 			</div>
 		</header>
 
 		<fieldset>
-			<h3>Statusbar Theme</h3>
+			<h3 translate="yes">Statusbar Theme</h3>
 			<p class="left">
-				<label><input type="radio" name="style" value="chrome"> Chrome</label>
-				<label><input type="radio" name="style" value="chrome-https"> Chrome (color on https)</label>
-				<label><input type="radio" name="style" value="chrome-badge"> Chrome (protocol badge)</label>
-				<label><input type="radio" name="style" value="firefox"> Firefox</label>
-				<label><input type="radio" name="style" value="firefox-badge"> Firefox (protocol badge)</label>
-				<label><input type="radio" name="style" value="ie10"> IE 10</label>
-				<label><input type="radio" name="style" value="ie10-badge"> IE 10 (protocol badge)</label>
-				<label><input type="radio" name="style" value="ie10-noshadow"> IE 10 (no drop shadow)</label>
-				<label><input type="radio" name="style" value="ie10-badge-noshadow"> IE 10 (badge, no shadow)</label>
+				<label><input type="radio" name="style" value="chrome"> <span translate="yes">Chrome</span></label>
+				<label><input type="radio" name="style" value="chrome-https"> <span translate="yes">Chrome (color on https)</span></label>
+				<label><input type="radio" name="style" value="chrome-badge"> <span translate="yes">Chrome (protocol badge)</span></label>
+				<label><input type="radio" name="style" value="firefox"> <span translate="yes">Firefox</span></label>
+				<label><input type="radio" name="style" value="firefox-badge"> <span translate="yes">Firefox (protocol badge)</span></label>
+				<label><input type="radio" name="style" value="ie10"> <span translate="yes">IE 10</span></label>
+				<label><input type="radio" name="style" value="ie10-badge"> <span translate="yes">IE 10 (protocol badge)</span></label>
+				<label><input type="radio" name="style" value="ie10-noshadow"> <span translate="yes">IE 10 (no drop shadow)</span></label>
+				<label><input type="radio" name="style" value="ie10-badge-noshadow"> <span translate="yes">IE 10 (badge, no shadow)</span></label>
 			</p>
 
 			<p class="demo">
@@ -55,6 +58,9 @@
 				<span>
 					<operastatusbar class="mailto"><operastatusspan class="protocol">mailto</operastatusspan>someone@example.com</operastatusbar>
 				</span>
+                <span>
+                    <operastatusbar class="title" translate="yes">Expanded abbreviation</operastatusbar>
+                </span>
 			</p>
 		</fieldset>
 		

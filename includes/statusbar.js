@@ -11,6 +11,7 @@ var MAX_WIDTH = 500;// Max width of the unexpanded statusbar
 var MAX_TRAVERSE = 5;
 var statusbar = null;
 var style = null;
+var styleQuote = null;
 var protocolText = null;
 var subdomainText = null;
 var domainText = null;
@@ -25,6 +26,7 @@ var isExpanded = false;
 function init() {
     var theme = JSON.parse(widget.preferences['style']);
     var path = '/css/statusbar.' + theme + '.css';
+    var pathQuote = '/css/quotes.css';
     statusbar = document.createElement('operastatusbar');
     statusbar.style.display = 'none';
     statusbar.style.opacity = '0';
@@ -40,6 +42,8 @@ function init() {
     statusbar.appendChild(domainText);
     statusbar.appendChild(pathText);
     document.documentElement.appendChild(statusbar);
+    styleQuote = document.createElement('style');
+    document.head.appendChild(styleQuote);
     style = document.createElement('style');
     document.head.appendChild(style);
     document.body.addEventListener('mouseover', show, false);
@@ -56,16 +60,35 @@ function init() {
     {
         var onCSS = function(event) {
             var message = event.data;
-            // Remove the message listener so it doesn't get called again.
             opera.extension.removeEventListener('message', onCSS, false);
             style.textContent = message.data.css;
         }
-        // On receipt of a message from the background script, execute onCSS().
         opera.extension.addEventListener('message', onCSS, false);
-        // Send the stylesheet path to the background script to get the CSS.
         opera.extension.postMessage({
             topic: 'LoadInjectedCSS',
             data: path
+        });
+    }
+    if (opera.extension.getFile)
+    {
+        var stylesheet = opera.extension.getFile(pathQuote);
+        var fr = new FileReader();
+        fr.onload = function () {
+            styleQuote.textContent = fr.result;
+        };
+        fr.readAsText(stylesheet);
+    }
+    else
+    {
+        var onCSS = function(event) {
+            var message = event.data;
+            opera.extension.removeEventListener('message', onCSS, false);
+            styleQuote.textContent = message.data.css;
+        }
+        opera.extension.addEventListener('message', onCSS, false);
+        opera.extension.postMessage({
+            topic: 'LoadInjectedCSS',
+            data: pathQuote
         });
     }
 }
