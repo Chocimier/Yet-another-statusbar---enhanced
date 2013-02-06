@@ -19,6 +19,7 @@ var hideTimeoutId = null;
 var expandTimeoutId = null;
 var removeTimeoutId = null;
 var currentTarget = null;
+var operatingTarget = document.createElement('a');
 var isExpanded = false;
 /** Initializes the statusbar */
 function init() {
@@ -74,39 +75,69 @@ function init() {
 */
 function show(e) {
     var target = e.target;
-    var t = MAX_TRAVERSE;
-    while(t > 0 && target && target.nodeName !== 'A' && target.nodeName !== 'AREA') {
+    for (var t = MAX_TRAVERSE; t>0 && target && !target.title && !target.href && !target.alt && target.type!='submit'; --t)
         target = target.parentNode;
-        --t;
-    }
-    if(!target || !target.href) {
+    if (t==0)
         return;
-    }
     clearTimeout(hideTimeoutId);
     clearTimeout(expandTimeoutId);
     clearTimeout(removeTimeoutId);
-    if(currentTarget !== target) {
+    if(currentTarget !== target)
+    {
         currentTarget = target;
-        var url = target.href;
-        var protocol = target.protocol.replace(':', '');
-        var domain = target.hostname;
-        var subdomain = '';
-        // Find the subdomain (if any)
-        var domainParts = domain.split('.');
-        if(domainParts.length > 2) {
-            subdomain = domainParts.shift() + '.';
-            domain = domainParts.join('.');
+        if (target.href)
+        {
+            address = true;
+            operatingTarget.href = target.href;
         }
-        // number of characters between protocol and subdomain
-        var sepLength = 1;
-        while(url.charAt(protocol.length + sepLength) === '/') {
-            sepLength += 1;
+        else if (target.type=='submit')
+        {
+            operatingTarget.href = target.form.action;
+            address = true;
         }
-        protocolText.textContent = protocol;
-        subdomainText.textContent = subdomain;
-        domainText.textContent = domain;
-        pathText.textContent = decodeURIComponent(url.substr(protocol.length + sepLength + subdomain.length + domain.length).trim());
-        statusbar.className = protocol;
+        else if (target.title)
+            address = false;
+        else if (target.alt)
+            address = false;
+        else
+            return;
+        if (address)
+        {
+            var url = operatingTarget.href;
+            var protocol = operatingTarget.protocol.replace(':', '');
+            var domain = operatingTarget.hostname;
+            var subdomain = '';
+            // Find the subdomain (if any)
+            var domainParts = domain.split('.');
+            if(domainParts.length > 2) {
+                subdomain = domainParts.shift() + '.';
+                domain = domainParts.join('.');
+            }
+            // number of characters between protocol and subdomain
+            var sepLength = 1;
+            while(url.charAt(protocol.length + sepLength) === '/') {
+                sepLength += 1;
+            }
+            protocolText.textContent = protocol;
+            subdomainText.textContent = subdomain;
+            domainText.textContent = domain;
+            pathText.textContent = decodeURIComponent(url.substr(protocol.length + sepLength + subdomain.length + domain.length).trim());
+            statusbar.className = protocol;
+        }
+        else
+        {
+            protocolText.textContent = subdomainText.textContent = pathText.textContent = '';
+            if (target.title)
+            {
+                domainText.textContent = target.title;
+                statusbar.className = 'title';
+            }
+            else if (target.alt)
+            {
+                domainText.textContent = target.alt;
+                statusbar.className = 'alter';
+            }
+        }
         statusbar.style.display = 'block';
         statusbar.style.maxWidth = isExpanded ? '100%' : Math.min(MAX_WIDTH, document.documentElement.clientWidth) + 'px';
         // If the mouse is over where the statusbar should appear, don't show the statusbar

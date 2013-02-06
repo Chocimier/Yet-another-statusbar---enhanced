@@ -56,3 +56,17 @@ html > operastatusbar.https .protocol {
 	color: #21401b !important;
 	border-color: #7c9f6f !important;
 }
+html > operastatusbar.title .protocol,
+html > operastatusbar.alter .protocol {
+    display: none !important;
+}
+
+html > operastatusbar.title::before,
+html > operastatusbar.alter::before {
+    content: open-quote;
+}
+
+html > operastatusbar.title::after,
+html > operastatusbar.alter::after {
+    content: close-quote;
+}
