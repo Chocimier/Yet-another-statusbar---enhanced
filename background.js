@@ -1,4 +1,4 @@
-var defaultSettings = [['style','chrome-https'],['expanding-on','true'],['expanding-length','500'],['expanding-time','1000']];
+var defaultSettings = [['style','chrome-https'], ['expanding-on','true'], ['expanding-length','500'], ['expanding-time','1000'], ['position','bottom-left']];
 for (var i=0; i<defaultSettings.length; ++i)
     if (widget.preferences[defaultSettings[i][0]] === undefined)
         widget.preferences[defaultSettings[i][0]] = JSON.stringify(defaultSettings[i][1]);

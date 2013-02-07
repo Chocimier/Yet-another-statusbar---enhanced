@@ -10,7 +10,9 @@ var ANIM_LENGTH = readSetting('animation-time', 300);// Duration of fade in/out
 
 var MAX_WIDTH = readSetting('expanding-length', 500);// Max width of the unexpanded statusbar
 
-var EXPANDING = readSetting('expanding-on', true);
+var EXPANDING = readSetting('expanding-on', true);// Should be expanded after some time
+
+var POSITION = ' '+readSetting('position', 'bottom-left').replace('-', ' ');// Corner in which bar should be placed
 
 // Assume anything that doesn't have an <a> as a parent X levels up isn't
 // part of a link. We might miss some links, but this will be much faster.
@@ -151,7 +153,7 @@ function show(e) {
             subdomainText.textContent = subdomain;
             domainText.textContent = domain;
             pathText.textContent = decodeURIComponent(url.substr(protocol.length + sepLength + subdomain.length + domain.length).trim());
-            statusbar.className = protocol;
+            statusbar.className = protocol + POSITION;
         }
         else
         {
@@ -159,12 +161,12 @@ function show(e) {
             if (target.title)
             {
                 domainText.textContent = target.title;
-                statusbar.className = 'title';
+                statusbar.className = 'title' + POSITION;
             }
             else if (target.alt)
             {
                 domainText.textContent = target.alt;
-                statusbar.className = 'alter';
+                statusbar.className = 'alter' + POSITION;
             }
         }
         statusbar.style.display = 'block';
