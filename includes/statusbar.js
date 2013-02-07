@@ -1,10 +1,16 @@
-var HIDE_TIMEOUT = 300;// Time between mouse out and hiding the statusbar
+function readSetting(name, def) {
+    return JSON.parse(widget.preferences[name] || JSON.stringify(def))
+}
 
-var EXPAND_TIMEOUT = 1000;// Time between mouse over and expand
+var HIDE_TIMEOUT = readSetting('hide-time', 300);// Time between mouse out and hiding the statusbar
 
-var ANIM_LENGTH = 300;// Duration of fade in/out
+var EXPAND_TIMEOUT = readSetting('expanding-time', 1000);// Time between mouse over and expand
 
-var MAX_WIDTH = 500;// Max width of the unexpanded statusbar
+var ANIM_LENGTH = readSetting('animation-time', 300);// Duration of fade in/out
+
+var MAX_WIDTH = readSetting('expanding-length', 500);// Max width of the unexpanded statusbar
+
+var EXPANDING = readSetting('expanding-on', true);
 
 // Assume anything that doesn't have an <a> as a parent X levels up isn't
 // part of a link. We might miss some links, but this will be much faster.
@@ -100,7 +106,7 @@ function show(e) {
     var target = e.target;
     for (var t = MAX_TRAVERSE; t>0 && target && !target.title && !target.href && !target.alt && target.type!='submit'; --t)
         target = target.parentNode;
-    if (t==0)
+    if (t==0 || target==document)
         return;
     clearTimeout(hideTimeoutId);
     clearTimeout(expandTimeoutId);
@@ -175,10 +181,10 @@ function show(e) {
         }, 0);
     }
     // set the statusbar to expand after a moment
-    expandTimeoutId = setTimeout(function () {
-        statusbar.style.maxWidth = document.documentElement.clientWidth + 'px';
-        isExpanded = true;
-    }, EXPAND_TIMEOUT);
+    if (EXPANDING)
+        expandTimeoutId = setTimeout(expandBar, EXPAND_TIMEOUT);
+    else
+        expandBar();
     // hide the statusbar when the mouse exits the hovered element
     function onMouseOut(e) {
         hide();
@@ -210,6 +216,11 @@ function hideMouseover() {
     currentTarget = null;
     statusbar.style.opacity = '0';
     statusbar.style.display = 'none';
+}
+/** Sets bar width to full window */
+function expandBar() {
+    statusbar.style.maxWidth = document.documentElement.clientWidth + 'px';
+    isExpanded = true;
 }
 function onLoad() {
     // Frames are hard. Ignore them for now

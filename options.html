@@ -63,7 +63,12 @@
                 </span>
 			</p>
 		</fieldset>
-		
+        <fieldset>
+            <h3 translate="yes">Expanding</h3>
+            <label><input type="checkbox" name="expanding-on"> <span translate="yes">Short at beginning</span></label>
+            <label><span translate="yes">Expand after</span> <input type="number" min="0" step="10" name="expanding-time"> ms</label>
+            <label><span translate="yes">Unexpanded length:</span> <input type="number" min="0" step="10" name="expanding-length"> px</label>
+        </fieldset>
 		<section id="debug" style="display: none">
 			<h3>widget.preferences</h3>
 			<div id="storage_list"></div>
@@ -71,11 +76,8 @@
 
 		<footer id="credits">
 			<ul>
-				<li>This thing is &copy; 2013 <a href="http://chaosinacan.com">Joel Spadin</a></li>
-				<li>
-					Based on <a href="https://addons.opera.com/extensions/details/popup-statusbar/">Popup Statusbar</a>
-					by <a href="http://myopera.com/hzr/">David Håsäther</a> and <a href="http://myopera.com/Helmers/">Jan Henrik Helmers</a>
-				</li>
+				<li translate="yes">This extension is &copy; 2013 Piotr Wójcik</li>
+				<li translate="yes">Much of code comes from <a href="http://chaosinacan.com">Joel Spadin</a>'s <a href="https://addons.opera.com/extensions/details/yet-another-statusbar/">Yet Another statusbar</a>, which is based on <a href="https://addons.opera.com/extensions/details/popup-statusbar/">Popup Statusbar</a> by <a href="http://myopera.com/hzr/">David Håsäther</a> and <a href="http://myopera.com/Helmers/">Jan Henrik Helmers</a></li>
 			</ul>
 		</footer>
 	</div><!-- #content -->

@@ -1,5 +1,3 @@
-
-
 // Function.prototype.bind polyfill
 if ( !Function.prototype.bind ) {
 

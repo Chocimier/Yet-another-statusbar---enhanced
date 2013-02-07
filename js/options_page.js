@@ -1,6 +1,3 @@
-
-
-
 /**
  * @namespace
  * Object that automates loading and saving settings in an Opera extension's options page
@@ -352,4 +349,3 @@ var OptionsPage = new function OptionsPage() {
 		return list;
 	}
 }
-
