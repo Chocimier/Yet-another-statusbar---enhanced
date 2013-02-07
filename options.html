@@ -28,7 +28,7 @@
 			</div>
 		</header>
 
-		<fieldset>
+		<fieldset class="flex">
 			<h3 translate="yes">Statusbar Theme</h3>
 			<p class="left">
 				<label><input type="radio" name="style" value="chrome"> <span translate="yes">Chrome</span></label>
@@ -65,9 +65,11 @@
 		</fieldset>
         <fieldset>
             <h3 translate="yes">Expanding</h3>
-            <label><input type="checkbox" name="expanding-on"> <span translate="yes">Short at beginning</span></label>
-            <label><span translate="yes">Expand after</span> <input type="number" min="0" step="10" name="expanding-time"> ms</label>
-            <label><span translate="yes">Unexpanded length:</span> <input type="number" min="0" step="10" name="expanding-length"> px</label>
+            <div>
+                <label><input type="checkbox" name="expanding-on"> <span translate="yes">Short at beginning</span></label>
+                <label><span translate="yes">Expand after</span> <input type="number" min="0" step="10" name="expanding-time"> ms</label>
+                <label><span translate="yes">Unexpanded length:</span> <input type="number" min="0" step="10" name="expanding-length"> px</label>
+            </div>
         </fieldset>
 		<section id="debug" style="display: none">
 			<h3>widget.preferences</h3>
