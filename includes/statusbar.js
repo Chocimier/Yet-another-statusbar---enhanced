@@ -14,6 +14,8 @@ var EXPANDING = readSetting('expanding-on', true);// Should be expanded after so
 
 var POSITION = ' '+readSetting('position', 'bottom-left').replace('-', ' ');// Corner in which bar should be placed
 
+var FONTSIZE = readSetting('font-size', 12)+'px !important';// Just font size
+
 // Assume anything that doesn't have an <a> as a parent X levels up isn't
 // part of a link. We might miss some links, but this will be much faster.
 var MAX_TRAVERSE = 5;
@@ -38,11 +40,14 @@ function init() {
     statusbar = document.createElement('operastatusbar');
     statusbar.style.display = 'none';
     statusbar.style.opacity = '0';
+    statusbar.style.fontSize = FONTSIZE;
     statusbar.addEventListener('mouseenter', hideMouseover, false);
     protocolText = document.createElement('operastatusspan');
+    protocolText.style.fontSize = FONTSIZE;
     protocolText.className = 'protocol';
     domainText = document.createElement('operastatusspan');
     domainText.className = 'domain';
+    domainText.style.fontSize = FONTSIZE;
     subdomainText = document.createTextNode('');
     pathText = document.createTextNode('');
     statusbar.appendChild(protocolText);

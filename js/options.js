@@ -43,12 +43,20 @@ function updateStyle() {
     }
 }
 
-function setPosition() {
+function updatePosition() {
     var bars = document.getElementsByTagName('operastatusbar');
-    corner = ' ' + JSON.parse(widget.preferences['position']).replace('-', ' ');
+    var corner = ' ' + JSON.parse(widget.preferences['position']).replace('-', ' ');
 
     for (var i=0; i<bars.length; ++i)
         bars[i].className = bars[i].className.split(' ')[0] + corner;
+}
+
+function updateFontSize() {
+    var bars = document.querySelectorAll('operastatusbar, operastatusspan, p.demo');
+    var size = JSON.parse(widget.preferences['font-size'])+'px !important';
+
+    for (var i=0; i<bars.length; ++i)
+        bars[i].style.fontSize = size;
 }
 
 /** Init **/
@@ -64,13 +72,16 @@ $(function() {
     document.head.appendChild(style);
 
     updateStyle();
-    setPosition();
+    updatePosition();
+    updateFontSize();
 
     window.addEventListener('settings', function(e) {
         if (e.detail.key === 'style')
             updateStyle();
         else if (e.detail.key === 'position')
-            setPosition();
+            updatePosition();
+        else if (e.detail.key === 'font-size')
+            updateFontSize();
     }, false);
 })
 

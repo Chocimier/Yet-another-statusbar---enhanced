@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget xmlns="http://www.w3.org/ns/widgets" version="0.2" defaultlocale="en" id="https://github.com/Chocimier/Yet-another-statusbar---enhanced" href="https://github.com/Chocimier/Yet-another-statusbar---enhanced">
+<widget xmlns="http://www.w3.org/ns/widgets" version="0.2.1" defaultlocale="en" id="https://github.com/Chocimier/Yet-another-statusbar---enhanced" href="https://github.com/Chocimier/Yet-another-statusbar---enhanced">
   <name xml:lang="en">Yet Another Statusbar — enhanced</name>
   <name xml:lang="pl">Kolejny wsród pasków stanu — z ulepszeniami</name>
   <author href="mailto:chocimir@myopera.com">Piotr Wójcik</author>

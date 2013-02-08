@@ -1,5 +1,4 @@
 translation={
-    "": "",
     "Statusbar": "Pasek stanu",
     "By": "autor:",
     "Statusbar Theme": "Wygląd paska",
@@ -20,5 +19,7 @@ translation={
     "bottom-left corner": "w lewym dolnym rogu",
     "bottom-right corner": "w prawym dolnym rogu",
     "top-left corner": "w lewym górnym rogu",
-    "top-right corner": "w prawym górnym rogu"
+    "top-right corner": "w prawym górnym rogu",
+    "Font size:": "Rozmiar czcionki:",
+    "Other": "Pozostałe"
 }
