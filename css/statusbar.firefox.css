@@ -13,8 +13,6 @@ html > operastatusbar {
 	box-sizing: border-box !important;
 	position: fixed !important;
 	z-index: 2147483647 !important;
-	left: 0 !important;
-	bottom: 0 !important;
 
 	margin: 0 !important;
 	padding: 1px 6px !important;
@@ -61,4 +59,20 @@ html > operastatusbar.alter::before {
 html > operastatusbar.title::after,
 html > operastatusbar.alter::after {
     content: close-quote;
+}
+
+html > operastatusbar.top {
+    top:0 !important;
+}
+
+html > operastatusbar.right {
+    right:0 !important;
+}
+
+html > operastatusbar.left {
+    left:0 !important;
+}
+
+html > operastatusbar.bottom {
+    bottom:0 !important;
 }

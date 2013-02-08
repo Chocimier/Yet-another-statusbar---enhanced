@@ -236,16 +236,17 @@ p.demo {
 p.demo span {
 	display: block;
 	overflow: auto;
+    position: relative !important;
+    min-width: 320px;
+    height: 50px;
 
 	border: 1px solid #9FA0A2;
 	background: #fff;
 	margin-top: 4px;
-	padding-top: 20px;
-	padding-right: 20px;
 }
 
 operastatusbar {
-	position: relative !important;
+	position: absolute !important;
 	display: block !important;
 	float: left;
 }

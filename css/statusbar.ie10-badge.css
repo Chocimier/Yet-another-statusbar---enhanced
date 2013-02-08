@@ -1,4 +1,4 @@
-﻿html > operastatusbar { }
+html > operastatusbar { }
 
 html > operastatusbar,
 html > operastatusbar operastatusspan {
@@ -13,8 +13,6 @@ html > operastatusbar {
 	box-sizing: border-box !important;
 	position: fixed !important;
 	z-index: 2147483647 !important;
-	left: 5px !important;
-	bottom: 5px !important;
 
 	margin: 0 !important;
 	padding: 0 5px !important;
@@ -69,4 +67,20 @@ html > operastatusbar.alter::before {
 html > operastatusbar.title::after,
 html > operastatusbar.alter::after {
     content: close-quote;
+}
+
+html > operastatusbar.top {
+    top:5px !important;
+}
+
+html > operastatusbar.right {
+    right:5px !important;
+}
+
+html > operastatusbar.left {
+    left:5px !important;
+}
+
+html > operastatusbar.bottom {
+    bottom:5px !important;
 }

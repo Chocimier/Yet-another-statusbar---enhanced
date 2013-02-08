@@ -43,6 +43,14 @@ function updateStyle() {
     }
 }
 
+function setPosition() {
+    var bars = document.getElementsByTagName('operastatusbar');
+    corner = ' ' + JSON.parse(widget.preferences['position']).replace('-', ' ');
+
+    for (var i=0; i<bars.length; ++i)
+        bars[i].className = bars[i].className.split(' ')[0] + corner;
+}
+
 /** Init **/
 $(function() {
     // Update the version text
@@ -56,10 +64,13 @@ $(function() {
     document.head.appendChild(style);
 
     updateStyle();
+    setPosition();
 
     window.addEventListener('settings', function(e) {
         if (e.detail.key === 'style')
             updateStyle();
+        else if (e.detail.key === 'position')
+            setPosition();
     }, false);
 })
 
