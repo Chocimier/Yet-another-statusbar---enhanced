@@ -5,7 +5,7 @@ var style = null;
  */
 function setText(items) {
     for (var i = 0; i < items.length; i++)
-        $(items[i][0]).text(items[i][1]);
+        document.querySelector(items[i][0]).textContent = items[i][1];
 }
 
 function updateStyle() {
@@ -60,7 +60,7 @@ function updateFontSize() {
 }
 
 /** Init **/
-$(function() {
+window.addEventListener('load',function() {
     // Update the version text
     setText([
         ['#widget-name', widget.name],
@@ -86,12 +86,18 @@ $(function() {
 })
 
 /** Debug **/
-$(window).keypress(function(e) {
+window.addEventListener('keypress', function(e) {
     if (e.target.nodeName == 'INPUT' || e.target.nodeName == 'TEXTAREA')
         return;
-    if (e.keyCode == 96 || e.keyCode == 126) {
-        $('#storage_list').empty().append(OptionsPage.debugStorage());
+    if (e.keyCode == 96 || e.keyCode == 126) // ` or ~
+    {
+        var storage_list = document.querySelector('#storage_list');
+        storage_list.innerHTML = '';
+        storage_list.appendChild(OptionsPage.debugStorage())
     }
     if (e.keyCode == 96)
-        $('#debug').toggle();
+    {
+        var debug = document.querySelector('#debug');
+        debug.style.display = (debug.style.display == 'none') ? 'block' : 'none';
+    }
 });
