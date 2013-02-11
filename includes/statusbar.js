@@ -16,6 +16,8 @@ var POSITION = ' '+readSetting('position', 'bottom-left').replace('-', ' ');// C
 
 var FONTSIZE = readSetting('font-size', 12)+'px !important';// Just font size
 
+var SHOWHTTP = readSetting('show-http', false);// Just font size
+
 // Assume anything that doesn't have an <a> as a parent X levels up isn't
 // part of a link. We might miss some links, but this will be much faster.
 var MAX_TRAVERSE = 5;
@@ -128,8 +130,8 @@ function show(e) {
         }
         else if (target.type=='submit')
         {
-            operatingTarget.href = target.form.action;
             address = true;
+            operatingTarget.href = target.form.action;
         }
         else if (target.title)
             address = false;
@@ -158,7 +160,7 @@ function show(e) {
             subdomainText.textContent = subdomain;
             domainText.textContent = domain;
             pathText.textContent = decodeURIComponent(url.substr(protocol.length + sepLength + subdomain.length + domain.length).trim());
-            statusbar.className = protocol + POSITION;
+            statusbar.className = protocol + POSITION + (SHOWHTTP ? ' withhttp' : ' withouthttp');
         }
         else
         {
@@ -174,8 +176,8 @@ function show(e) {
                 statusbar.className = 'alter' + POSITION;
             }
         }
-        statusbar.style.display = 'block';
         statusbar.style.maxWidth = isExpanded ? '100%' : Math.min(MAX_WIDTH, document.documentElement.clientWidth) + 'px';
+        statusbar.style.display = 'block';
         // If the mouse is over where the statusbar should appear, don't show the statusbar
         var box = statusbar.getBoundingClientRect();
         if(e.clientX > box.left && e.clientX < box.right && e.clientY > box.top && e.clientY < box.bottom) {

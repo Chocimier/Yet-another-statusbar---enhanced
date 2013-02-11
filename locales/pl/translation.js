@@ -20,6 +20,7 @@ translation={
     "bottom-right corner": "w prawym dolnym rogu",
     "top-left corner": "w lewym górnym rogu",
     "top-right corner": "w prawym górnym rogu",
+    "Other": "Pozostałe",
     "Font size:": "Rozmiar czcionki:",
-    "Other": "Pozostałe"
+    "Display protocol, when it's http": "Nie pomijaj w adresie protokołu http"
 }

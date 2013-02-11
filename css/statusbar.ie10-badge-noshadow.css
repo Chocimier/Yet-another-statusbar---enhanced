@@ -25,6 +25,7 @@ html > operastatusbar {
 	background: #fff !important;
 	border: 1px solid #767676 !important;
 
+    -o-transition: opacity 0.3s, max-width 0.3s !important;
 	transition: opacity 0.3s, max-width 0.3s !important;
 }
 
@@ -43,7 +44,7 @@ html > operastatusbar .domain {
 	color: #000 !important;
 }
 
-html > operastatusbar.http .protocol {
+html > operastatusbar.http.withouthttp .protocol {
 	display: none !important;
 }
 

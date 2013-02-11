@@ -25,6 +25,7 @@ html > operastatusbar {
 	background: #fff !important;
 	border: 1px solid #767676 !important;
 
+    -o-transition: opacity 0.3s, max-width 0.3s !important;
 	transition: opacity 0.3s, max-width 0.3s !important;
 }
 
@@ -41,6 +42,10 @@ html > operastatusbar.javascript .protocol::after,
 html > operastatusbar.opera .protocol::after,
 html > operastatusbar.mailto .protocol::after {
 	content: ':' !important;
+}
+
+html > operastatusbar.http.withouthttp .protocol {
+    display: none !important;
 }
 
 html > operastatusbar.title .protocol,

@@ -27,11 +27,16 @@ html > operastatusbar {
 
 	box-shadow: 6px 5px 4px -3px rgba(0, 0, 0, 0.4) !important;
 
+    -o-transition: opacity 0.3s, max-width 0.3s !important;
 	transition: opacity 0.3s, max-width 0.3s !important;
 }
 
 html > operastatusbar .protocol::after {
 	content: '://' !important;
+}
+
+html > operastatusbar.http.withouthttp .protocol {
+    display: none !important;
 }
 
 html > operastatusbar .domain {

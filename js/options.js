@@ -43,12 +43,13 @@ function updateStyle() {
     }
 }
 
-function updatePosition() {
+function updateClasses() {
     var bars = document.getElementsByTagName('operastatusbar');
     var corner = ' ' + JSON.parse(widget.preferences['position']).replace('-', ' ');
+    var showHttp = JSON.parse(widget.preferences['show-http']);
 
     for (var i=0; i<bars.length; ++i)
-        bars[i].className = bars[i].className.split(' ')[0] + corner;
+        bars[i].className = bars[i].className.split(' ')[0] + corner + (showHttp ? ' withhttp' : ' withouthttp');
 }
 
 function updateFontSize() {
@@ -72,14 +73,16 @@ window.addEventListener('load',function() {
     document.head.appendChild(style);
 
     updateStyle();
-    updatePosition();
+    updateClasses();
     updateFontSize();
 
     window.addEventListener('settings', function(e) {
         if (e.detail.key === 'style')
             updateStyle();
         else if (e.detail.key === 'position')
-            updatePosition();
+            updateClasses();
+        else if (e.detail.key === 'show-http')
+            updateClasses();
         else if (e.detail.key === 'font-size')
             updateFontSize();
     }, false);
