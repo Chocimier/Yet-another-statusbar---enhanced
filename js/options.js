@@ -1,5 +1,8 @@
 var style = null;
 
+function getSetting(name) {
+    return JSON.parse(widget.preferences[name])
+}
 /**
  * Updates the text of a number of elements on the page
  */
@@ -9,7 +12,7 @@ function setText(items) {
 }
 
 function updateStyle() {
-    var theme = settings.style;
+    var theme = getSetting('style');
     var path = '/css/statusbar.' + theme + '.css';
     if (opera.extension.getFile)
     {
@@ -45,8 +48,8 @@ function updateStyle() {
 
 function updateClasses() {
     var bars = document.getElementsByTagName('operastatusbar');
-    var corner = ' ' + JSON.parse(widget.preferences['position']).replace('-', ' ');
-    var showHttp = JSON.parse(widget.preferences['show-http']);
+    var corner = ' ' + getSetting('position').replace('-', ' ');
+    var showHttp = getSetting('show-http');
 
     for (var i=0; i<bars.length; ++i)
         bars[i].className = bars[i].className.split(' ')[0] + corner + (showHttp ? ' withhttp' : ' withouthttp');
@@ -54,7 +57,7 @@ function updateClasses() {
 
 function updateFontSize() {
     var bars = document.querySelectorAll('operastatusbar, operastatusspan, p.demo');
-    var size = JSON.parse(widget.preferences['font-size'])+'px !important';
+    var size = getSetting('font-size')+'px !important';
 
     for (var i=0; i<bars.length; ++i)
         bars[i].style.fontSize = size;

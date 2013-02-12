@@ -2,37 +2,37 @@ html > operastatusbar { }
 
 html > operastatusbar,
 html > operastatusbar operastatusspan {
-	width: auto;
-	height: auto;
-	font: status-bar !important;
-	line-height: 1.5 !important;
+    width: auto;
+    height: auto;
+    font: status-bar !important;
+    line-height: 1.5 !important;
 }
 
 html > operastatusbar {
-	/*all: default !important;*/
-	box-sizing: border-box !important;
-	position: fixed !important;
-	z-index: 2147483647 !important;
+    /*all: default !important;*/
+    box-sizing: border-box !important;
+    position: fixed !important;
+    z-index: 2147483647 !important;
 
-	margin: 0 !important;
-	padding: 0 5px !important;
-	overflow: hidden !important;
-	white-space: nowrap !important;
-	text-overflow: ellipsis !important;
-	direction: ltr !important;
+    margin: 0 !important;
+    padding: 0 5px !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    direction: ltr !important;
 
-	color: #555 !important;
-	background: #fff !important;
-	border: 1px solid #767676 !important;
+    color: #555 !important;
+    background: #fff !important;
+    border: 1px solid #767676 !important;
 
-	box-shadow: 6px 5px 4px -3px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 6px 5px 4px -3px rgba(0, 0, 0, 0.4) !important;
 
     -o-transition: opacity 0.3s, max-width 0.3s !important;
-	transition: opacity 0.3s, max-width 0.3s !important;
+    transition: opacity 0.3s, max-width 0.3s !important;
 }
 
 html > operastatusbar .protocol::after {
-	content: '://' !important;
+    content: '://' !important;
 }
 
 html > operastatusbar.http.withouthttp .protocol {
@@ -40,14 +40,14 @@ html > operastatusbar.http.withouthttp .protocol {
 }
 
 html > operastatusbar .domain {
-	display: inline !important;
-	color: #000 !important;
+    display: inline !important;
+    color: #000 !important;
 }
 
 html > operastatusbar.javascript .protocol::after,
 html > operastatusbar.opera .protocol::after,
 html > operastatusbar.mailto .protocol::after {
-	content: ':' !important;
+    content: ':' !important;
 }
 
 html > operastatusbar.title .protocol,

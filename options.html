@@ -1,67 +1,68 @@
 <!doctype html>
 <html>
 <head>
-	<title translate="yes">Statusbar</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="css/options.css">
+    <title translate="yes">Statusbar</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/options.css">
     <link rel="stylesheet" href="css/quotes.css">
-	<script src="js/options.js"></script>
-	<script src="js/storage.js"></script>
-	<script src="js/options_page.js"></script>
-	<script src="js/default_settings.js"></script>
+    <script src="js/options.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/options_page.js"></script>
+    <script src="js/default_settings.js"></script>
     <script src="js/translate.js"></script>
     <script src="translation.js"></script>
-	<script>
-		OptionsPage.init(settings);
-	</script>
+    <script>
+        var settings = new SettingStorage(defaultSettings);
+        OptionsPage.init(settings);
+    </script>
 </head>
 <body>
 <div id="viewport">
-	<div id="topbar"></div>
-	<div id="content">
-		<header>
-			<img src="img/icon.png" alt="Statusbar Icon">
-			<div class="right">
-				<h1><span id="widget-name">Statusbar</span> <span class="version" id="widget-version"></span></h1>
-				<h2><span translate="yes">By</span> <span id="widget-author">Joel Spadin</span></h2>
-			</div>
-		</header>
+    <div id="topbar"></div>
+    <div id="content">
+        <header>
+            <img src="img/icon.png" alt="Statusbar Icon">
+            <div class="right">
+                <h1><span id="widget-name">Statusbar</span> <span class="version" id="widget-version"></span></h1>
+                <h2><span translate="yes">By</span> <span id="widget-author">Joel Spadin</span></h2>
+            </div>
+        </header>
 
-		<fieldset class="flex">
-			<h3 translate="yes">Statusbar Theme</h3>
-			<p class="left">
-				<label><input type="radio" name="style" value="chrome"> <span translate="yes">Chrome</span></label>
-				<label><input type="radio" name="style" value="chrome-https"> <span translate="yes">Chrome (color on https)</span></label>
-				<label><input type="radio" name="style" value="chrome-badge"> <span translate="yes">Chrome (protocol badge)</span></label>
-				<label><input type="radio" name="style" value="firefox"> <span translate="yes">Firefox</span></label>
-				<label><input type="radio" name="style" value="firefox-badge"> <span translate="yes">Firefox (protocol badge)</span></label>
-				<label><input type="radio" name="style" value="ie10"> <span translate="yes">IE 10</span></label>
-				<label><input type="radio" name="style" value="ie10-badge"> <span translate="yes">IE 10 (protocol badge)</span></label>
-				<label><input type="radio" name="style" value="ie10-noshadow"> <span translate="yes">IE 10 (no drop shadow)</span></label>
-				<label><input type="radio" name="style" value="ie10-badge-noshadow"> <span translate="yes">IE 10 (badge, no shadow)</span></label>
-			</p>
+        <fieldset class="flex">
+            <h3 translate="yes">Statusbar Theme</h3>
+            <p class="left">
+                <label><input type="radio" name="style" value="chrome"> <span translate="yes">Chrome</span></label>
+                <label><input type="radio" name="style" value="chrome-https"> <span translate="yes">Chrome (color on https)</span></label>
+                <label><input type="radio" name="style" value="chrome-badge"> <span translate="yes">Chrome (protocol badge)</span></label>
+                <label><input type="radio" name="style" value="firefox"> <span translate="yes">Firefox</span></label>
+                <label><input type="radio" name="style" value="firefox-badge"> <span translate="yes">Firefox (protocol badge)</span></label>
+                <label><input type="radio" name="style" value="ie10"> <span translate="yes">IE 10</span></label>
+                <label><input type="radio" name="style" value="ie10-badge"> <span translate="yes">IE 10 (protocol badge)</span></label>
+                <label><input type="radio" name="style" value="ie10-noshadow"> <span translate="yes">IE 10 (no drop shadow)</span></label>
+                <label><input type="radio" name="style" value="ie10-badge-noshadow"> <span translate="yes">IE 10 (badge, no shadow)</span></label>
+            </p>
 
-			<p class="demo">
-				<span>
-					<operastatusbar class="http"><operastatusspan class="protocol">http</operastatusspan>images.<operastatusspan class="domain">google.com</operastatusspan>/images?q=cats</operastatusbar>
-				</span>
-				<span>
-					<operastatusbar class="https"><operastatusspan class="protocol">https</operastatusspan>images.<operastatusspan class="domain">google.com</operastatusspan>/images?q=cats</operastatusbar>
-				</span>
-				<span>
-					<operastatusbar class="ftp"><operastatusspan class="protocol">ftp</operastatusspan>ftp.<operastatusspan class="domain">opera.com</operastatusspan>/pub/opera/</operastatusbar>
-				</span>
-				<span>
-					<operastatusbar class="javascript"><operastatusspan class="protocol">javascript</operastatusspan>void(0)</operastatusbar>
-				</span>
-				<span>
-					<operastatusbar class="mailto"><operastatusspan class="protocol">mailto</operastatusspan>someone@example.com</operastatusbar>
-				</span>
+            <p class="demo">
+                <span>
+                    <operastatusbar class="http"><operastatusspan class="protocol">http</operastatusspan>images.<operastatusspan class="domain">google.com</operastatusspan>/images?q=cats</operastatusbar>
+                </span>
+                <span>
+                    <operastatusbar class="https"><operastatusspan class="protocol">https</operastatusspan>images.<operastatusspan class="domain">google.com</operastatusspan>/images?q=cats</operastatusbar>
+                </span>
+                <span>
+                    <operastatusbar class="ftp"><operastatusspan class="protocol">ftp</operastatusspan>ftp.<operastatusspan class="domain">opera.com</operastatusspan>/pub/opera/</operastatusbar>
+                </span>
+                <span>
+                    <operastatusbar class="javascript"><operastatusspan class="protocol">javascript</operastatusspan>void(0)</operastatusbar>
+                </span>
+                <span>
+                    <operastatusbar class="mailto"><operastatusspan class="protocol">mailto</operastatusspan>someone@example.com</operastatusbar>
+                </span>
                 <span>
                     <operastatusbar class="title" translate="yes">Expanded abbreviation</operastatusbar>
                 </span>
-			</p>
-		</fieldset>
+            </p>
+        </fieldset>
         <fieldset>
             <h3 translate="yes">Position</h3>
             <div>
@@ -86,18 +87,18 @@
                 <label><input type="checkbox" name="show-http"> <span translate="yes">Display protocol, when it's http</span></label>
             </div>
         </fieldset>
-		<section id="debug" style="display: none">
-			<h3>widget.preferences</h3>
-			<div id="storage_list"></div>
-		</section>
+        <section id="debug" style="display: none">
+        <h3>widget.preferences</h3>
+        <div id="storage_list"></div>
+        </section>
 
-		<footer id="credits">
-			<ul>
-				<li translate="yes">This extension is &copy; 2013 Piotr Wójcik</li>
-				<li translate="yes">Much of code comes from <a href="http://chaosinacan.com">Joel Spadin</a>'s <a href="https://addons.opera.com/extensions/details/yet-another-statusbar/">Yet Another statusbar</a>, which is based on <a href="https://addons.opera.com/extensions/details/popup-statusbar/">Popup Statusbar</a> by <a href="http://myopera.com/hzr/">David Håsäther</a> and <a href="http://myopera.com/Helmers/">Jan Henrik Helmers</a></li>
-			</ul>
-		</footer>
-	</div><!-- #content -->
+        <footer id="credits">
+            <ul>
+                <li translate="yes">This extension is &copy; 2013 Piotr Wójcik</li>
+                <li translate="yes">Much of code comes from <a href="http://chaosinacan.com">Joel Spadin</a>'s <a href="https://addons.opera.com/extensions/details/yet-another-statusbar/">Yet Another statusbar</a>, which is based on <a href="https://addons.opera.com/extensions/details/popup-statusbar/">Popup Statusbar</a> by <a href="http://myopera.com/hzr/">David Håsäther</a> and <a href="http://myopera.com/Helmers/">Jan Henrik Helmers</a></li>
+            </ul>
+        </footer>
+    </div><!-- #content -->
 </div><!-- #viewport -->
 
 </body>
